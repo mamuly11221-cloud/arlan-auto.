@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARLAN MOTORWORKS | Кызыл-Кия</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #c5a059; --black: #080808; --white: #ffffff; }
+        body { font-family: 'Helvetica', sans-serif; margin: 0; background-color: var(--black); color: var(--white); }
+        nav { background: rgba(0, 0, 0, 0.9); padding: 15px; text-align: center; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 24px; font-weight: 900; letter-spacing: 4px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .logo i { color: var(--gold); font-size: 28px; }
+        .hero { height: 85vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1500') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .wolf-badge { font-size: 80px; color: var(--gold); margin-bottom: 20px; opacity: 0.9; }
+        .hero h1 { font-size: 40px; text-transform: uppercase; margin: 0; font-weight: 900; line-height: 1; }
+        .hero p { color: var(--gold); letter-spacing: 3px; margin: 15px 0 40px; text-transform: uppercase; font-size: 13px; font-weight: bold; }
+        .btn-group { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
+        .btn { padding: 18px; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 13px; text-align: center; transition: 0.3s; border-radius: 4px; border: 2px solid var(--gold); color: var(--gold); }
+        .services { background: white; color: black; padding: 60px 20px; border-radius: 20px 20px 0 0; }
+        .item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #eee; font-weight: 600; }
+        .price { color: var(--gold); font-weight: 800; }
+        .contacts { padding: 60px 20px; text-align: center; background: #000; border-top: 1px solid #222; }
+        .wa-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1000; }
+    </style>
+</head>
+<body>
+<nav><div class="logo"><i class="fas fa-wolf-pack-battalion"></i> ARLAN<span>.</span></div></nav>
+<section class="hero">
+    <div class="wolf-badge"><i class="fas fa-wolf-pack-battalion"></i></div>
+    <h1>ARLAN <br> MOTORWORKS</h1>
+    <p>Кызыл-Кия — Качество и Сила</p>
+    <div class="btn-group">
+        <a href="https://wa.me/996505511125" class="btn">Записаться на ремонт</a>
+        <a href="https://www.google.com/maps?q=40.263620,72.104963" class="btn" target="_blank">Открыть карту</a>
+    </div>
+</section>
+<section class="services">
+    <div class="item"><span>Диагностика</span><span class="price">500 с</span></div>
+    <div class="item"><span>Замена масла</span><span class="price">400 с</span></div>
+    <div class="item"><span>Ходовая часть</span><span class="price">от 1000 с</span></div>
+</section>
+<footer class="contacts">
+    <p>г. Кызыл-Кия, ул. Кудайбердиева Умсунай, 3</p>
+    <p>Тел: +996 (505) 51-11-25</p>
+</footer>
+<a href="https://wa.me/996505511125" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</body>
+</html>
