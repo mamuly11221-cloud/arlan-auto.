@@ -1,505 +1,302 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ARLAN MOTORWORKS — Премиум автосервис в Кызыл-Кия</title>
-<meta name="description" content="Премиум автосервис ARLAN MOTORWORKS в Кызыл-Кия. Диагностика, ремонт, детейлинг. Гарантия качества и честные цены.">
-<link rel="icon" href="favicon.ico">
-
-<meta property="og:title" content="ARLAN MOTORWORKS — Премиум автосервис">
-<meta property="og:description" content="Ремонт и уход за авто в Кызыл-Кия. Качество, гарантия, скорость.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1596495577886-d920f6fd059f?auto=format&fit=crop&w=1200&q=80">
-<meta property="og:type" content="website">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AutoRepair",
-  "name": "Arlan Motorworks",
-  "image": "https://images.unsplash.com/photo-1596495577886-d920f6fd059f",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "улица Кудайбердиева Умсунай, 3",
-    "addressLocality": "Кызыл-Кия",
-    "addressRegion": "Ошская область",
-    "addressCountry": "KG"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": 40.263632, "longitude": 72.104962 },
-  "url": "https://arlan-motorworks.kg",
-  "telephone": "+996505511123",
-  "openingHours": "Mo-Fr 09:00-18:00, Sa 09:00-16:00",
-  "priceRange": "$$"
-}
-</script>
-
-<style>
-  :root {
-    --gold: #d4af37;
-    --gold-hover: #b5952f;
-    --bg: #050505;
-    --surface: rgba(30, 30, 30, 0.6); /* Glass effect base */
-    --surface-hover: rgba(50, 50, 50, 0.8);
-    --text: #ffffff;
-    --muted: #a0a0a0;
-    --accent: #25D366; /* WhatsApp */
-    --call: #3498db;
-    --blur: 12px;
-  }
-
-  /* RESET & BASE */
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(circle at top right, #1a1a1a 0%, #000 40%);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  a { color: inherit; text-decoration: none; transition: 0.3s; }
-  ul { list-style: none; padding: 0; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-  /* ANIMATIONS */
-  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* HEADER / NAV (Desktop Sticky) */
-  .top-nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: none; /* Hidden on mobile by default */
-  }
-  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-  .nav-logo { font-weight: 800; color: var(--gold); font-size: 20px; letter-spacing: 1px; }
-  .nav-links { display: flex; gap: 24px; font-size: 14px; font-weight: 500; }
-  .nav-links a:hover { color: var(--gold); }
-  @media(min-width: 768px) { .top-nav { display: block; } }
-
-  /* HERO SECTION */
-  .hero {
-    position: relative;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: url('https://images.unsplash.com/photo-1596495577886-d920f6fd059f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    margin-bottom: 40px;
-  }
-  .hero::before {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, var(--bg) 100%);
-  }
-  .hero-content { position: relative; z-index: 2; padding: 20px; max-width: 800px; }
-  .brand-big {
-    display: block; font-size: clamp(32px, 5vw, 48px); font-weight: 900;
-    color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
-    text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-  }
-  .hero-title { font-size: clamp(18px, 3vw, 24px); font-weight: 400; color: #eee; margin-bottom: 30px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARLAN MOTORWORKS — Премиум автосервис в Кызыл-Кия</title>
+  <meta name="description" content="Премиум автосервис ARLAN MOTORWORKS в Кызыл-Кия. Диагностика, ремонт ходовой, замена масла, детейлинг. Гарантия, честные цены, быстро.">
   
-  /* BUTTONS */
-  .btn {
-    display: inline-block; padding: 14px 28px; border-radius: 50px;
-    font-weight: 700; text-transform: uppercase; font-size: 14px; letter-spacing: 0.5px;
-    cursor: pointer; transition: all 0.3s ease;
-  }
-  .btn-gold {
-    background: var(--gold); color: #000; border: none;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-  }
-  .btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); }
-  .btn-outline {
-    background: transparent; border: 2px solid rgba(255,255,255,0.3); color: #fff;
-    margin-left: 10px;
-  }
-  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+  <!-- Open Graph -->
+  <meta property="og:title" content="ARLAN MOTORWORKS — Премиум автосервис в Кызыл-Кия">
+  <meta property="og:description" content="Честный ремонт авто: диагностика за 15 мин, гарантия на работы. Запись в WhatsApp.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1596495577886-d920f6fd059f?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:type" content="website">
 
-  /* FEATURES (Icons) */
-  .features-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px; margin-top: -60px; position: relative; z-index: 3; margin-bottom: 60px;
+  <!-- Schema.org AutoRepair (улучшенный) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "ARLAN MOTORWORKS",
+    "image": "https://images.unsplash.com/photo-1596495577886-d920f6fd059f",
+    "url": "https://arlan-motorworks.kg",
+    "telephone": "+996505511125",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "улица Кудайбердиева Умсунай, 3",
+      "addressLocality": "Кызыл-Кия",
+      "addressRegion": "Баткенская область",
+      "postalCode": "720400",
+      "addressCountry": "KG"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.263632,
+      "longitude": 72.104962
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "16:00"
+      }
+    ],
+    "sameAs": []
   }
-  .feature-box {
-    background: var(--surface); backdrop-filter: blur(var(--blur));
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 24px; border-radius: 16px; text-align: center;
-    transition: transform 0.3s;
-  }
-  .feature-box:hover { transform: translateY(-5px); background: var(--surface-hover); }
-  .f-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+  </script>
 
-  /* TITLES */
-  .section-title {
-    text-align: center; font-size: 28px; color: var(--gold);
-    margin-bottom: 40px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-  }
-  .section-title::after {
-    content: ""; display: block; width: 60px; height: 3px; background: var(--gold);
-    margin: 10px auto 0; border-radius: 2px;
-  }
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-hover: #b5952f;
+      --bg: #050505;
+      --surface: rgba(30, 30, 30, 0.6);
+      --surface-hover: rgba(50, 50, 50, 0.8);
+      --text: #ffffff;
+      --muted: #a0a0a0;
+      --accent: #25D366;
+      --call: #3498db;
+      --blur: 12px;
+    }
 
-  /* SERVICES CARDS */
-  .services-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding-bottom: 60px; }
-  .service-card {
-    background: var(--surface); border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 16px; padding: 24px; width: 100%; max-width: 320px;
-    display: flex; flex-direction: column; transition: 0.3s; position: relative; overflow: hidden;
-  }
-  .service-card:hover { border-color: var(--gold); transform: scale(1.02); }
-  .service-icon { font-size: 40px; margin-bottom: 15px; color: var(--muted); transition: 0.3s; }
-  .service-card:hover .service-icon { color: var(--gold); }
-  .s-title { font-size: 20px; font-weight: 700; margin: 0 0 10px; }
-  .s-desc { font-size: 14px; color: var(--muted); margin-bottom: 20px; flex-grow: 1; }
-  .s-price { 
-    font-size: 18px; font-weight: 700; color: var(--gold); 
-    padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  /* Badge for popular item */
-  .popular-badge {
-    position: absolute; top: 12px; right: 12px; background: var(--gold); color: #000;
-    font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;
-  }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-  /* REVIEWS */
-  .reviews-scroller {
-    display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
-    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-  }
-  .review-card {
-    min-width: 280px; max-width: 350px; scroll-snap-align: start;
-    background: #111; padding: 24px; border-radius: 12px; border-left: 3px solid var(--gold);
-  }
-  .stars { color: var(--gold); margin-bottom: 10px; font-size: 14px; }
-  .r-text { font-style: italic; font-size: 14px; color: #ddd; margin-bottom: 15px; }
-  .r-author { font-weight: 700; font-size: 13px; color: var(--muted); text-align: right; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-  /* GALLERY */
-  .gallery-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; margin-bottom: 60px;
-  }
-  .gallery-img {
-    width: 100%; height: 200px; object-fit: cover; border-radius: 8px;
-    filter: grayscale(40%); transition: 0.4s; cursor: pointer;
-  }
-  .gallery-img:hover { filter: grayscale(0%); transform: scale(1.03); z-index: 2; }
+    /* Анимации */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* FAQ (Accordion) */
-  .faq-section { max-width: 800px; margin: 0 auto 60px; }
-  .faq-item { background: #111; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
-  .faq-question {
-    padding: 18px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between;
-    transition: background 0.2s;
-  }
-  .faq-question:hover { background: #1a1a1a; }
-  .faq-question::after { content: "+"; color: var(--gold); font-size: 20px; }
-  .faq-item.active .faq-question::after { content: "−"; }
-  .faq-answer {
-    max-height: 0; overflow: hidden; padding: 0 18px; color: #ccc; font-size: 14px;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-  }
-  .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 18px; }
+    /* Hero */
+    .hero {
+      min-height: 85vh;
+      background: url('https://images.unsplash.com/photo-1596495577886-d920f6fd059f?auto=format&fit=crop&w=1600&q=80') center/cover;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5), var(--bg));
+    }
+    .hero-content { position: relative; z-index: 2; padding: 20px; max-width: 900px; }
+    .brand-big { font-size: clamp(40px, 8vw, 72px); font-weight: 900; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; text-shadow: 0 4px 20px rgba(212,175,85,0.4); }
+    .hero-title { font-size: clamp(20px, 4vw, 28px); margin-bottom: 32px; }
 
-  /* CONTACT & MAP */
-  .contact-wrap {
-    display: grid; grid-template-columns: 1fr; gap: 40px; background: #080808; padding: 40px 20px;
-    border-top: 1px solid #222;
-  }
-  @media(min-width: 800px) { .contact-wrap { grid-template-columns: 1fr 1fr; } }
+    /* Кнопки */
+    .btn {
+      display: inline-block; padding: 16px 32px; border-radius: 50px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .btn-gold { background: var(--gold); color: #000; box-shadow: 0 4px 15px rgba(212,175,85,0.4); }
+    .btn-gold:hover { background: var(--gold-hover); transform: translateY(-3px); }
+    .btn-outline { border: 2px solid var(--gold); color: var(--gold); margin-left: 16px; }
+    .btn-outline:hover { background: rgba(212,175,85,0.1); }
 
-  .form-box h3 { margin-top: 0; color: #fff; }
-  input, select, textarea {
-    width: 100%; padding: 14px; margin-bottom: 12px; background: #161616;
-    border: 1px solid #333; color: #fff; border-radius: 8px; font-family: inherit;
-    transition: border 0.3s;
-  }
-  input:focus, select:focus, textarea:focus { border-color: var(--gold); outline: none; }
-  
-  .map-box { min-height: 300px; border-radius: 12px; overflow: hidden; position: relative; }
-  .map-box iframe { width: 100%; height: 100%; border: none; }
+    /* Features / Услуги / etc. */
+    .features-grid, .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin: 40px 0; }
+    .feature-box, .service-card {
+      background: var(--surface); backdrop-filter: blur(var(--blur));
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px;
+      text-align: center; transition: all 0.3s;
+    }
+    .feature-box:hover, .service-card:hover { transform: translateY(-8px); background: var(--surface-hover); border-color: var(--gold); }
+    .section-title { text-align: center; font-size: 32px; color: var(--gold); margin: 60px 0 40px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+    .section-title::after { content:""; display:block; width:80px; height:4px; background:var(--gold); margin:16px auto; border-radius:2px; }
 
-  /* FOOTER */
-  footer { text-align: center; padding: 40px 20px 80px; color: #666; font-size: 13px; }
-  
-  /* MOBILE BOTTOM BAR */
-  .mobile-bar {
-    position: fixed; bottom: 0; left: 0; right: 0; height: 60px;
-    background: #111; display: flex; z-index: 9999;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
-  }
-  .mob-btn {
-    flex: 1; display: flex; align-items: center; justify-content: center;
-    font-weight: 700; text-decoration: none; font-size: 14px;
-    gap: 8px; transition: 0.2s;
-  }
-  .mob-wa { background: var(--accent); color: #fff; }
-  .mob-call { background: var(--call); color: #fff; }
-  .mob-btn:active { opacity: 0.8; }
-  
-  /* UTILS */
-  @media(max-width: 600px) {
-    .btn { width: 100%; margin: 5px 0; text-align: center; }
-    .hero-content { padding-top: 60px; }
-  }
-</style>
+    /* Reviews */
+    .reviews-scroller { display: flex; overflow-x: auto; gap: 24px; padding-bottom: 20px; }
+    .review-card { min-width: 320px; background: #111; padding: 28px; border-radius: 16px; border-left: 4px solid var(--gold); }
+
+    /* FAQ */
+    .faq-item { background: #111; margin-bottom: 12px; border-radius: 12px; overflow: hidden; }
+    .faq-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: "+"; font-size: 24px; color: var(--gold); }
+    .faq-item.active .faq-question::after { content: "−"; }
+    .faq-answer { max-height: 0; overflow: hidden; padding: 0 20px; transition: all 0.4s; color: #ccc; }
+
+    /* Contact */
+    .contact-wrap { display: grid; gap: 40px; background: #080808; padding: 60px 20px; border-top: 1px solid #222; }
+    @media (min-width: 800px) { .contact-wrap { grid-template-columns: 1fr 1fr; } }
+    input, select, textarea {
+      width: 100%; padding: 16px; margin-bottom: 16px; background: #161616; border: 1px solid #333;
+      color: #fff; border-radius: 10px; font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); outline: none; }
+
+    /* Footer & Mobile Bar */
+    footer { text-align: center; padding: 60px 20px; color: #666; }
+    .mobile-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; height: 64px; background: #111;
+      display: flex; z-index: 9999; box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+    }
+    .mob-btn { flex: 1; display: flex; align-items: center; justify-content: center; font-weight: 700; gap: 10px; color: #fff; }
+    .mob-wa { background: var(--accent); }
+    .mob-call { background: var(--call); }
+
+    @media (max-width: 600px) {
+      .hero-content { padding-top: 80px; }
+      .btn { width: 100%; margin: 12px 0; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="top-nav">
-    <div class="container nav-inner">
-      <div class="nav-logo">ARLAN MOTORWORKS</div>
-      <div class="nav-links">
-        <a href="#services">Услуги</a>
-        <a href="#gallery">Галерея</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="#contact" style="color:var(--gold)">Записаться</a>
-      </div>
-    </div>
-  </nav>
-
   <header class="hero">
     <div class="hero-content fade-in">
-      <span class="brand-big">Arlan Motorworks</span>
-      <h1 class="hero-title">Премиум обслуживание вашего авто в Кызыл-Кия. <br>Честно. Быстро. Профессионально.</h1>
-      
-      <div style="margin-top: 25px;">
-        <a class="btn btn-gold" href="#contact">Записаться на сервис</a>
-        <a class="btn btn-outline" href="#services">Смотреть цены</a>
+      <div class="brand-big">ARLAN MOTORWORKS</div>
+      <h1 class="hero-title">Премиум автосервис в Кызыл-Кия<br>Диагностика бесплатно при ремонте от 3000 сом</h1>
+      <div>
+        <a href="#contact" class="btn btn-gold">Записаться + подарок</a>
+        <a href="#services" class="btn btn-outline">Смотреть цены</a>
       </div>
     </div>
   </header>
 
   <div class="container">
     <div class="features-grid fade-in">
-      <div class="feature-box">
-        <span class="f-icon">⏱️</span>
-        <h3>Быстро</h3>
-        <p style="font-size:13px; color:#aaa">Диагностика за 15 минут, замена масла за 30 минут.</p>
-      </div>
-      <div class="feature-box">
-        <span class="f-icon">🛡️</span>
-        <h3>Надежно</h3>
-        <p style="font-size:13px; color:#aaa">Даем официальную гарантию на все виды работ.</p>
-      </div>
-      <div class="feature-box">
-        <span class="f-icon">🤝</span>
-        <h3>Честно</h3>
-        <p style="font-size:13px; color:#aaa">Никаких скрытых доплат. Оплата после проверки.</p>
-      </div>
-      <div class="feature-box">
-        <span class="f-icon">⚙️</span>
-        <h3>Качественно</h3>
-        <p style="font-size:13px; color:#aaa">Используем только оригинальные запчасти и масла.</p>
-      </div>
+      <div class="feature-box"><span style="font-size:40px; display:block; margin-bottom:12px;">⏱️</span><h3>Быстро</h3><p>В день обращения — диагностика 15 мин</p></div>
+      <div class="feature-box"><span style="font-size:40px; display:block; margin-bottom:12px;">🛡️</span><h3>Гарантия</h3><p>6–12 месяцев на все работы</p></div>
+      <div class="feature-box"><span style="font-size:40px; display:block; margin-bottom:12px;">🤝</span><h3>Честно</h3><p>Без навязывания услуг</p></div>
+      <div class="feature-box"><span style="font-size:40px; display:block; margin-bottom:12px;">⚙️</span><h3>Качественно</h3><p>Оригинальные запчасти + проверенные дубли</p></div>
     </div>
   </div>
 
-  <section id="services" class="container fade-in">
-    <h2 class="section-title">Наши услуги</h2>
-    <div class="services-grid">
-      
-      <article class="service-card">
-        <div class="popular-badge">Популярное</div>
-        <div class="service-icon">🛢</div>
-        <h3 class="s-title">Замена масла под ключ</h3>
-        <p class="s-desc">Полная замена масла, всех фильтров, проверка жидкостей.</p>
-        <div class="s-price">от 2000 сом</div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">💻</div>
-        <h3 class="s-title">Компьютерная диагностика</h3>
-        <p class="s-desc">Полное сканирование всех систем, удаление ошибок, отчет.</p>
-        <div class="s-price">от 1500 сом</div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">✨</div>
-        <h3 class="s-title">Детейлинг и Полировка</h3>
-        <p class="s-desc">Восстановительная полировка, керамика, глубокая химчистка.</p>
-        <div class="s-price">от 4500 сом</div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">🔧</div>
-        <h3 class="s-title">Ремонт ходовой</h3>
-        <p class="s-desc">Диагностика подвески, замена амортизаторов, сайлентблоков.</p>
-        <div class="s-price">Договорная</div>
-      </article>
-
+  <section id="services" class="container">
+    <h2 class="section-title fade-in">Услуги и цены</h2>
+    <div class="services-grid fade-in">
+      <div class="service-card"><div style="position:absolute;top:12px;right:12px;background:var(--gold);color:#000;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:800;">Популярно</div>
+        <span style="font-size:48px; display:block; margin-bottom:16px;">🛢</span>
+        <h3>Замена масла под ключ</h3><p>Масло + фильтры + проверка</p><div style="font-size:22px;color:var(--gold);font-weight:700;margin-top:16px;">от 2000 сом</div></div>
+      <div class="service-card">
+        <span style="font-size:48px; display:block; margin-bottom:16px;">💻</span>
+        <h3>Компьютерная диагностика</h3><p>Полное сканирование + отчет</p><div style="font-size:22px;color:var(--gold);font-weight:700;margin-top:16px;">от 1500 сом</div></div>
+      <div class="service-card">
+        <span style="font-size:48px; display:block; margin-bottom:16px;">✨</span>
+        <h3>Детейлинг / Полировка</h3><p>Керамика, химчистка, восстановление</p><div style="font-size:22px;color:var(--gold);font-weight:700;margin-top:16px;">от 4500 сом</div></div>
+      <div class="service-card">
+        <span style="font-size:48px; display:block; margin-bottom:16px;">🔧</span>
+        <h3>Ремонт ходовой</h3><p>Подвеска, амортизаторы, сайлентблоки</p><div style="font-size:22px;color:var(--gold);font-weight:700;margin-top:16px;">договорная</div></div>
     </div>
   </section>
 
-  <section id="reviews" class="container fade-in" style="margin-bottom:60px;">
-    <h2 class="section-title">Отзывы клиентов</h2>
-    <div class="reviews-scroller">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="r-text">"Наконец-то в Кызыл-Кия появился нормальный сервис. Не нужно стоять над душой у мастера, всё делают по совести."</p>
-        <div class="r-author">— Азамат, Lexus LX470</div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="r-text">"Заезжала на диагностику, нашли проблему, которую другие не видели. Лишнего не навязывают."</p>
-        <div class="r-author">— Айнура, Toyota Camry</div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★☆</div>
-        <p class="r-text">"Хорошие ребята, делают быстро. Цены адекватные для такого уровня обслуживания."</p>
-        <div class="r-author">— Сергей, BMW X5</div>
-      </div>
+  <section class="container">
+    <h2 class="section-title fade-in">Отзывы</h2>
+    <div class="reviews-scroller fade-in">
+      <div class="review-card"><div style="color:var(--gold);font-size:18px;">★★★★★</div><p>"Лучший сервис в городе. Всё честно, быстро и качественно!" — Азамат</p></div>
+      <div class="review-card"><div style="color:var(--gold);font-size:18px;">★★★★★</div><p>"Диагностику сделали за 15 минут, проблему нашли сразу." — Айнура</p></div>
+      <div class="review-card"><div style="color:var(--gold);font-size:18px;">★★★★☆</div><p>"Цены адекватные, ребята знают своё дело." — Сергей</p></div>
     </div>
   </section>
 
-  <section class="container fade-in">
-    <h2 class="section-title">Вопросы и ответы</h2>
-    <div class="faq-section">
-      <div class="faq-item">
-        <div class="faq-question">Нужно ли записываться заранее?</div>
-        <div class="faq-answer">Желательно, чтобы мы забронировали подъемник специально для вас. Но мы также принимаем в порядке живой очереди при наличии свободных мест.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Какие запчасти вы ставите?</div>
-        <div class="faq-answer">Мы работаем только с проверенными поставщиками. У нас есть как оригинальные запчасти, так и качественные дубликаты (по вашему выбору).</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Есть ли гарантия?</div>
-        <div class="faq-answer">Да, мы даем гарантию на все выполненные работы. Если проблема возникнет снова по нашей вине — исправим бесплатно.</div>
-      </div>
+  <section class="container">
+    <h2 class="section-title fade-in">Вопросы-ответы</h2>
+    <div class="faq-section fade-in">
+      <div class="faq-item"><div class="faq-question">Нужно записываться заранее?</div><div class="faq-answer">Желательно, но принимаем и без записи при наличии мест.</div></div>
+      <div class="faq-item"><div class="faq-question">Какие запчасти используете?</div><div class="faq-answer">Оригинал и качественные аналоги (по вашему выбору).</div></div>
+      <div class="faq-item"><div class="faq-question">Есть гарантия?</div><div class="faq-answer">Да, от 3 до 12 месяцев в зависимости от работы.</div></div>
     </div>
   </section>
 
-  <section id="gallery" class="container fade-in">
-    <h2 class="section-title">Фото наших работ</h2>
-    <div class="gallery-grid">
-      <img src="https://images.unsplash.com/photo-1486262715619-01b8c2297605?auto=format&fit=crop&w=600&q=70" class="gallery-img" alt="Работа 1" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=600&q=70" class="gallery-img" alt="Работа 2" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1568802920456-11b17980428d?auto=format&fit=crop&w=600&q=70" class="gallery-img" alt="Работа 3" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=600&q=70" class="gallery-img" alt="Работа 4" loading="lazy">
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Контакты и запись</h2>
-      <div class="contact-wrap fade-in">
-        
-        <div class="form-box">
-          <h3>Оставить заявку</h3>
-          <p style="color:#aaa; font-size:14px; margin-bottom:20px;">Заполните форму, и мы перезвоним через 5 минут для подтверждения времени.</p>
-          <form id="contact-form">
-            <input type="text" id="name" placeholder="Ваше Имя" required>
-            <input type="tel" id="phone" placeholder="Номер телефона" required>
-            <select id="service">
-              <option value="">Выберите услугу...</option>
-              <option value="Масло">Замена масла</option>
-              <option value="Диагностика">Диагностика</option>
-              <option value="Ходовая">Ремонт ходовой</option>
-              <option value="Детейлинг">Детейлинг/Мойка</option>
-              <option value="Другое">Другое</option>
-            </select>
-            <textarea id="note" rows="3" placeholder="Комментарий (марка авто, год)"></textarea>
-            <button type="submit" class="btn btn-gold" style="width:100%">Отправить заявку</button>
-            <div id="form-msg" style="margin-top:10px; font-size:13px;"></div>
-          </form>
-        </div>
-
-        <div class="map-box">
-          <iframe 
-            src="https://maps.google.com/maps?q=40.263632,72.104962&hl=ru&z=16&output=embed" 
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-
+  <section id="contact" class="container">
+    <h2 class="section-title fade-in">Записаться на сервис</h2>
+    <div class="contact-wrap fade-in">
+      <div>
+        <h3>Оставить заявку</h3>
+        <p style="color:#aaa;margin:16px 0;">Ответим в WhatsApp за 5 минут</p>
+        <form id="contact-form">
+          <input type="text" id="name" placeholder="Ваше имя" required>
+          <input type="tel" id="phone" placeholder="+996 ___ ___ ___" required pattern="\+996[0-9]{9}">
+          <select id="service" required>
+            <option value="">Выберите услугу</option>
+            <option>Замена масла</option>
+            <option>Диагностика</option>
+            <option>Ремонт ходовой</option>
+            <option>Детейлинг</option>
+            <option>Другое</option>
+          </select>
+          <textarea id="note" rows="4" placeholder="Марка авто, год, проблема..."></textarea>
+          <button type="submit" class="btn btn-gold" style="width:100%;">Отправить → WhatsApp</button>
+          <div id="form-msg" style="margin-top:16px;font-size:14px;"></div>
+        </form>
+      </div>
+      <div>
+        <iframe src="https://maps.google.com/maps?q=40.263632,72.104962&hl=ru&z=16&output=embed" width="100%" height="400" style="border:0;border-radius:16px;" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container">
-      <p style="color:#fff; font-weight:700; font-size:16px;">ARLAN MOTORWORKS</p>
-      <p>Кызыл-Кия, улица Кудайбердиева Умсунай, 3</p>
-      <p style="color:var(--muted)">© <span id="year">2024</span> Все права защищены.</p>
-    </div>
+    <p style="font-size:18px;font-weight:700;color:#fff;">ARLAN MOTORWORKS</p>
+    <p>Кызыл-Кия, ул. Кудайбердиева Умсунай, 3</p>
+    <p style="color:#666;margin-top:16px;">© <span id="year"></span> Все права защищены</p>
   </footer>
 
   <div class="mobile-bar">
-    <a href="https://wa.me/996505511125" class="mob-btn mob-wa" id="wa-btn-mob">
-      <span>💬</span> WhatsApp
-    </a>
-    <a href="tel:+996505511125" class="mob-btn mob-call">
-      <span>📞</span> Позвонить
-    </a>
+    <a href="https://wa.me/996505511125" class="mob-btn mob-wa">💬 WhatsApp</a>
+    <a href="tel:+996505511125" class="mob-btn mob-call">📞 Позвонить</a>
   </div>
 
-<script>
-  // 1. Auto Year
-  document.getElementById('year').textContent = new Date().getFullYear();
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  // 2. FAQ Accordion Logic
-  document.querySelectorAll('.faq-question').forEach(item => {
-    item.addEventListener('click', () => {
-      const parent = item.parentElement;
-      parent.classList.toggle('active');
+    // FAQ аккордеон
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
     });
-  });
 
-  // 3. Scroll Animation (Observer)
-  const observerOptions = { threshold: 0.1 };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+    // Fade-in при скролле
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Форма → WhatsApp
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('service').value;
+      const note = document.getElementById('note').value;
+      const msg = document.getElementById('form-msg');
+
+      if (!service) {
+        msg.style.color = 'red'; msg.textContent = 'Выберите услугу';
+        return;
       }
+
+      const text = `Здравствуйте! Хочу записаться в ARLAN MOTORWORKS\nИмя: ${name}\nТел: ${phone}\nУслуга: ${service}\nКомментарий: ${note}`;
+      msg.style.color = '#25D366'; msg.textContent = 'Открываем чат...';
+
+      setTimeout(() => {
+        window.location.href = `https://wa.me/996505511125?text=${encodeURIComponent(text)}`;
+      }, 800);
     });
-  }, observerOptions);
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // 4. Form Handling (WhatsApp)
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const service = document.getElementById('service').value;
-    const note = document.getElementById('note').value;
-    const msgDiv = document.getElementById('form-msg');
-
-    if(!service) {
-      msgDiv.style.color = 'red';
-      msgDiv.textContent = 'Пожалуйста, выберите услугу.';
-      return;
-    }
-
-    // Format message
-    const text = `👋 Здравствуйте, Arlan Motorworks!%0AМеня зовут ${name}.%0AТелефон: ${phone}%0AИнтересует: ${service}%0AАвто/Комментарий: ${note}`;
-    
-    msgDiv.style.color = '#25D366';
-    msgDiv.textContent = 'Перенаправляем в WhatsApp...';
-
-    // Safe redirect
-    setTimeout(() => {
-      window.location.href = `https://wa.me/996505511123?text=${text}`;
-    }, 1000);
-  });
-
-  // Mobile WA Button quick text
-  document.getElementById('wa-btn-mob').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = "https://wa.me/996505511123?text=Здравствуйте!%20Хочу%20записаться%20на%20ремонт.";
-  });
-
-</script>
+    // Простая маска телефона (опционально)
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g,'');
+      if (v.startsWith('996')) v = v.substring(3);
+      if (v.length > 9) v = v.substring(0,9);
+      e.target.value = v ? '+996 ' + v.match(/.{1,3}/g)?.join(' ') : '+996';
+    });
+  </script>
 </body>
 </html>
