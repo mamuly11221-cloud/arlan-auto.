@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ARLAN MOTORWORKS — Премиум автосервис в Кызыл-Кия</title>
-  <meta name="description" content="Премиум автосервис ARLAN MOTORWORKS в Кызыл-Кия. Бесплатная диагностика при ремонте от 3000 сом, гарантия 6–12 мес, честные цены, быстрый ремонт. Запись в WhatsApp.">
-  <meta name="theme-color" content="#050505">
-
+  <meta name="description" content="Премиум автосервис ARLAN MOTORWORKS в Кызыл-Кия. Диагностика, ремонт ходовой, замена масла, детейлинг. Гарантия, честные цены, быстро.">
+  
   <!-- Open Graph -->
   <meta property="og:title" content="ARLAN MOTORWORKS — Премиум автосервис в Кызыл-Кия">
-  <meta property="og:description" content="Честный ремонт: диагностика 15 мин, гарантия, оригинальные запчасти.">
+  <meta property="og:description" content="Честный ремонт авто: диагностика за 15 мин, гарантия на работы. Запись в WhatsApp.">
   <meta property="og:image" content="https://img.freepik.com/premium-photo/black-car-stands-brightly-lit-auto-repair-shop-while-technician-works-background-highlighting-busy-evening-atmosphere-generative-ai_262708-50900.jpg">
 
-  <!-- Schema.org -->
+  <!-- Schema.org (как было, улучшенный) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     "name": "ARLAN MOTORWORKS",
     "image": "https://img.freepik.com/premium-photo/black-car-stands-brightly-lit-auto-repair-shop-while-technician-works-background-highlighting-busy-evening-atmosphere-generative-ai_262708-50900.jpg",
-    "url": "https://mamumuly11221-cloud.github.io/arlan-auto/",
+    "url": "https://arlan-motorworks.kg",
     "telephone": "+996505511125",
     "priceRange": "$$",
     "address": {
@@ -41,89 +40,57 @@
 
   <style>
     :root {
-      --gold: #d4af37; --gold-hover: #b5952f; --bg: #050505; --text: #ffffff;
-      --surface: rgba(30,30,30,0.6); --surface-hover: rgba(50,50,50,0.8);
-      --blur: 16px; --accent: #25D366; --call: #3498db; --muted: #a0a0a0;
-    }
-    [data-theme="light"] {
-      --bg: #f8f9fa; --text: #212529; --surface: rgba(255,255,255,0.85);
-      --surface-hover: rgba(240,240,240,0.9); --muted: #6c757d;
+      --gold: #d4af37; --gold-hover: #b5952f; --bg: #050505; --surface: rgba(30,30,30,0.6);
+      --surface-hover: rgba(50,50,50,0.8); --text: #ffffff; --muted: #a0a0a0;
+      --accent: #25D366; --call: #3498db; --blur: 12px;
     }
     * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.4s, color 0.4s; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .fade-in { opacity:0; transform:translateY(30px); transition: all 0.8s ease-out; }
+    .fade-in { opacity:0; transform:translateY(30px); transition:all 0.8s ease-out; }
     .fade-in.visible { opacity:1; transform:translateY(0); }
-    @media (prefers-reduced-motion: reduce) { .fade-in, .btn, .card { transition: none; } }
 
     /* Hero */
     .hero {
-      min-height: 90vh; background: url('https://img.freepik.com/premium-photo/black-car-stands-brightly-lit-auto-repair-shop-while-technician-works-background-highlighting-busy-evening-atmosphere-generative-ai_262708-50900.jpg') center/cover;
+      min-height: 90vh; background: url('https://img.freepik.com/premium-photo/black-car-stands-brightly-lit-auto-repair-shop-while-technician-works-background-highlighting-busy-evening-atmosphere-generative-ai_262708-50900.jpg') center/cover no-repeat;
       position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
     }
     .hero::before { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.75), rgba(0,0,0,0.6), var(--bg)); }
     .hero-content { position:relative; z-index:2; padding:20px; max-width:900px; }
-
     .brand-big { font-size: clamp(48px,9vw,80px); font-weight:900; color:var(--gold); letter-spacing:4px; text-transform:uppercase; margin-bottom:16px; text-shadow:0 6px 25px rgba(212,175,85,0.5); }
     .hero-title { font-size: clamp(22px,4.5vw,32px); margin-bottom:32px; }
 
-    .btn {
-      display:inline-block; padding:16px 36px; border-radius:50px; font-weight:700; text-transform:uppercase; letter-spacing:1px;
-      transition: all 0.3s ease; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-    .btn-gold { background:var(--gold); color:#000; }
-    .btn-gold:hover { background:var(--gold-hover); transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 25px rgba(212,175,85,0.5); }
-    .btn-outline { border:2px solid var(--gold); color:var(--gold); margin-left:16px; background: transparent; }
-    .btn-outline:hover { background: rgba(212,175,85,0.15); transform: translateY(-4px) scale(1.05); }
+    .btn { display:inline-block; padding:16px 36px; border-radius:50px; font-weight:700; text-transform:uppercase; letter-spacing:1px; transition:all 0.3s; cursor:pointer; }
+    .btn-gold { background:var(--gold); color:#000; box-shadow:0 6px 20px rgba(212,175,85,0.5); }
+    .btn-gold:hover { background:var(--gold-hover); transform:translateY(-4px); }
+    .btn-outline { border:2px solid var(--gold); color:var(--gold); margin-left:16px; }
+    .btn-outline:hover { background:rgba(212,175,85,0.15); }
 
-    /* Glassmorphism cards */
+    /* Grids */
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; margin:40px 0; }
     .card {
-      background: var(--surface); backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
-      border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:28px; text-align:center;
-      transition: all 0.4s ease; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      background:var(--surface); backdrop-filter:blur(var(--blur)); border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px; padding:28px; text-align:center; transition:all 0.4s;
     }
-    .card:hover { transform: translateY(-10px) scale(1.03); border-color: var(--gold); box-shadow: 0 12px 40px rgba(212,175,85,0.3); }
+    .card:hover { transform:translateY(-10px); background:var(--surface-hover); border-color:var(--gold); }
 
     /* Gallery */
     .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
     .gallery-img {
-      width:100%; aspect-ratio: 4/3; object-fit:cover; border-radius:12px; filter:grayscale(50%);
-      transition: all 0.4s ease; cursor:pointer; loading: lazy;
+      width:100%; height:220px; object-fit:cover; border-radius:12px; filter:grayscale(50%);
+      transition:all 0.4s ease; cursor:pointer;
     }
     .gallery-img:hover { filter:grayscale(0); transform:scale(1.06); box-shadow:0 10px 30px rgba(212,175,85,0.3); }
 
+    /* Section titles */
     .section-title { text-align:center; font-size:clamp(28px,5vw,36px); color:var(--gold); margin:80px 0 40px; font-weight:800; text-transform:uppercase; letter-spacing:2px; }
     .section-title::after { content:""; display:block; width:100px; height:4px; background:var(--gold); margin:20px auto; border-radius:2px; }
 
-    /* Mobile bar + back to top */
+    /* Mobile bar */
     .mobile-bar { position:fixed; bottom:0; left:0; right:0; height:68px; background:#111; display:flex; z-index:9999; box-shadow:0 -6px 25px rgba(0,0,0,0.7); }
-    .mob-btn { flex:1; display:flex; align-items:center; justify-content:center; font-weight:700; gap:12px; color:#fff; font-size:16px; text-decoration:none; }
+    .mob-btn { flex:1; display:flex; align-items:center; justify-content:center; font-weight:700; gap:12px; color:#fff; font-size:16px; }
     .mob-wa { background:var(--accent); }
     .mob-call { background:var(--call); }
-
-    #back-to-top {
-      position:fixed; bottom:90px; right:20px; background:var(--gold); color:#000; width:50px; height:50px;
-      border-radius:50%; display:none; align-items:center; justify-content:center; font-size:1.5rem; cursor:pointer;
-      box-shadow:0 4px 15px rgba(0,0,0,0.4); transition: all 0.3s;
-    }
-    #back-to-top:hover { transform: scale(1.1); }
-
-    /* Progress bar */
-    #progress-bar { position:fixed; top:0; left:0; height:4px; background:var(--gold); width:0%; z-index:10000; transition: width 0.2s; }
-
-    /* Theme toggle */
-    #theme-toggle {
-      position: fixed; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: var(--gold);
-      font-size: 1.8rem; cursor: pointer; padding: 10px; border-radius: 50%; backdrop-filter: blur(10px); z-index: 999;
-    }
-
-    /* Cookie consent */
-    #cookie-consent {
-      position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
-      color: #fff; padding: 20px; text-align: center; z-index: 9998; display: none;
-    }
-    #cookie-consent button { background: var(--gold); color: #000; border: none; padding: 10px 20px; margin-left: 15px; cursor: pointer; border-radius: 8px; }
 
     @media (max-width:600px) {
       .hero-content { padding-top:100px; }
@@ -133,9 +100,6 @@
   </style>
 </head>
 <body>
-
-  <div id="progress-bar"></div>
-  <button id="theme-toggle" aria-label="Переключить тему">☀️</button>
 
   <header class="hero">
     <div class="hero-content fade-in">
@@ -167,39 +131,40 @@
     </div>
   </section>
 
+  <!-- Новая галерея с фото машин и подъёмников -->
   <section id="gallery" class="container">
     <h2 class="section-title fade-in">Наши работы</h2>
     <div class="gallery-grid fade-in">
       <img src="https://img.freepik.com/premium-photo/black-car-stands-brightly-lit-auto-repair-shop-while-technician-works-background-highlighting-busy-evening-atmosphere-generative-ai_262708-50900.jpg" class="gallery-img" alt="Премиум авто в сервисе" loading="lazy">
       <img src="https://thumbs.dreamstime.com/z/matte-black-lamborghini-urus-premium-workshop-luxury-cars-stands-lit-sharp-taillights-visible-mercedes-amg-new-range-418022131.jpg" class="gallery-img" alt="Lamborghini в премиум-гараже" loading="lazy">
       <img src="https://thumbs.dreamstime.com/b/view-car-raised-lift-car-repair-shop-close-up-bottom-view-vehicle-raised-lift-car-repair-shop-155436634.jpg" class="gallery-img" alt="Машина на подъёмнике" loading="lazy">
-      <!-- Добавь свои реальные фото вместо стоковых -->
+      <img src="https://thumbs.dreamstime.com/z/view-car-raised-lift-car-repair-shop-close-up-bottom-view-vehicle-raised-lift-car-repair-shop-155436634.jpg" class="gallery-img" alt="Поднятая машина снизу" loading="lazy">
+      <img src="https://img.freepik.com/premium-photo/two-mechanic-was-checking-car-suspension-vehicle-raised-lift-maintenance-station-car-service-station-with-two-men-repair-car-mechanic-working-automotive-service-center_35150-2949.jpg" class="gallery-img" alt="Механики проверяют подвеску" loading="lazy">
+      <img src="https://images.squarespace-cdn.com/content/v1/67f7e52a6a82d675038981b5/61c6854e-e8b5-404f-b3f8-6a4a9aec444e/15918799-D8C2-4427-8BB1-7C4DDE9ADF61+%281%29.jpg" class="gallery-img" alt="Ремонт подвески на подъёмнике" loading="lazy">
+      <img src="https://thumbs.dreamstime.com/b/dirty-scratched-vehicle-stands-next-to-shiny-polished-car-showcasing-differences-caused-proper-care-maintenance-361486226.jpg" class="gallery-img" alt="До и после полировки" loading="lazy">
+      <img src="https://i.ytimg.com/vi/tGnf8G8A8qU/maxresdefault.jpg" class="gallery-img" alt="Детейлинг салона" loading="lazy">
     </div>
   </section>
 
+  <!-- Контакты -->
   <section id="contact" class="container">
     <h2 class="section-title fade-in">Записаться на сервис</h2>
-    <div style="display:grid; gap:40px; background:#080808; padding:60px 20px; border-top:1px solid #222; border-radius:16px;" class="fade-in">
-      <form id="contact-form">
-        <input type="text" id="name" placeholder="Ваше имя" required aria-required="true">
-        <input type="tel" id="phone" placeholder="+996 ___ ___ ___" required pattern="\+996[0-9]{9}" aria-required="true">
-        <select id="service" required aria-required="true">
-          <option value="">Услуга...</option>
-          <option>Замена масла</option>
-          <option>Диагностика</option>
-          <option>Ходовая</option>
-          <option>Детейлинг</option>
-          <option>Другое</option>
-        </select>
-        <textarea id="note" rows="4" placeholder="Марка авто, год, проблема..."></textarea>
-        <button type="submit" class="btn btn-gold" style="width:100%;">Отправить в WhatsApp</button>
-        <div id="form-msg" style="margin-top:16px; font-size:14px; min-height:20px;"></div>
-      </form>
-      <iframe src="https://maps.google.com/maps?q=40.263632,72.104962&hl=ru&z=16&output=embed" width="100%" height="400" style="border:0;border-radius:16px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div style="display:grid; gap:40px; background:#080808; padding:60px 20px; border-top:1px solid #222;" class="fade-in">
+      <div>
+        <form id="contact-form">
+          <input type="text" id="name" placeholder="Ваше имя" required>
+          <input type="tel" id="phone" placeholder="+996 ___ ___ ___" required pattern="\+996[0-9]{9}">
+          <select id="service" required><option value="">Услуга...</option><option>Замена масла</option><option>Диагностика</option><option>Ходовая</option><option>Детейлинг</option><option>Другое</option></select>
+          <textarea id="note" rows="4" placeholder="Марка авто, год, проблема..."></textarea>
+          <button type="submit" class="btn btn-gold" style="width:100%;">Отправить в WhatsApp</button>
+          <div id="form-msg" style="margin-top:16px; font-size:14px;"></div>
+        </form>
+      </div>
+      <iframe src="https://maps.google.com/maps?q=40.263632,72.104962&hl=ru&z=16&output=embed" width="100%" height="400" style="border:0;border-radius:16px;" allowfullscreen loading="lazy"></iframe>
     </div>
   </section>
 
-  <footer style="text-align:center; padding:60px 20px; color:#666; background:#000;">
+  <footer style="text-align:center; padding:60px 20px; color:#666;">
     <p style="font-size:20px; font-weight:700; color:#fff;">ARLAN MOTORWORKS</p>
     <p>Кызыл-Кия, ул. Кудайбердиева Умсунай, 3 • +996 505 511 125</p>
     <p style="margin-top:20px;">Instagram • Telegram • © <span id="year"></span></p>
@@ -210,81 +175,34 @@
     <a href="tel:+996505511125" class="mob-btn mob-call">📞 Позвонить</a>
   </div>
 
-  <button id="back-to-top" aria-label="Наверх">↑</button>
-
-  <div id="cookie-consent">
-    Мы используем cookies для улучшения работы сайта. <button id="accept-cookies">Принять</button>
-  </div>
-
   <script>
-    // Год
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // FAQ (если добавишь позже)
+    // document.querySelectorAll('.faq-question').forEach(q => q.addEventListener('click', () => q.parentElement.classList.toggle('active')));
 
     // Fade-in
     const obs = new IntersectionObserver(e => e.forEach(en => { if(en.isIntersecting) en.target.classList.add('visible'); }), {threshold:0.1});
     document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-    // Progress bar
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('progress-bar').style.width = scrolled + "%";
+    // Форма WhatsApp
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const n = document.getElementById('name').value, p = document.getElementById('phone').value,
+            s = document.getElementById('service').value, note = document.getElementById('note').value;
+      const m = document.getElementById('form-msg');
+      if(!s) { m.style.color='red'; m.textContent='Выберите услугу'; return; }
+      const txt = `Здравствуйте! Запись в ARLAN MOTORWORKS\nИмя: ${n}\nТел: ${p}\nУслуга: ${s}\n${note}`;
+      m.style.color='#25D366'; m.textContent='Открываем чат...';
+      setTimeout(() => window.location.href = `https://wa.me/996505511125?text=${encodeURIComponent(txt)}`, 800);
     });
 
-    // Theme toggle
-    const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('click', () => {
-      const current = document.documentElement.dataset.theme;
-      document.documentElement.dataset.theme = current === 'light' ? 'dark' : 'light';
-      toggle.textContent = current === 'light' ? '☀️' : '🌙';
-    });
-
-    // Phone mask
+    // Маска телефона
     document.getElementById('phone').addEventListener('input', e => {
       let v = e.target.value.replace(/\D/g,'');
       if(v.startsWith('996')) v = v.substring(3);
       v = v.substring(0,9);
       e.target.value = v ? '+996 ' + v.match(/.{1,3}/g)?.join(' ') : '+996';
-    });
-
-    // Form with validation
-    document.getElementById('contact-form').addEventListener('submit', e => {
-      e.preventDefault();
-      const form = e.target;
-      const msg = document.getElementById('form-msg');
-      if (!form.checkValidity()) {
-        msg.style.color = 'red';
-        msg.textContent = 'Проверьте заполненные поля';
-        return;
-      }
-      const n = form.name.value.trim();
-      const p = form.phone.value.trim();
-      const s = form.service.value;
-      const note = form.note.value.trim();
-      const txt = `Здравствуйте! Запись в ARLAN MOTORWORKS\nИмя: ${n}\nТел: ${p}\nУслуга: ${s}\n${note}`;
-      msg.style.color = '#25D366';
-      msg.textContent = 'Открываем чат WhatsApp...';
-      setTimeout(() => {
-        window.open(`https://wa.me/996505511125?text=${encodeURIComponent(txt)}`, '_blank');
-        msg.textContent = '';
-      }, 800);
-    });
-
-    // Back to top
-    const btt = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      btt.style.display = window.scrollY > 400 ? 'flex' : 'none';
-    });
-    btt.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-
-    // Cookie consent
-    if (!localStorage.getItem('cookiesAccepted')) {
-      document.getElementById('cookie-consent').style.display = 'block';
-    }
-    document.getElementById('accept-cookies').addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      document.getElementById('cookie-consent').style.display = 'none';
     });
   </script>
 </body>
