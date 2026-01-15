@@ -215,40 +215,27 @@
   </div>
 
   <script>
-    // --- ДАННЫЕ ВАШЕГО БОТА ---
+    // --- TELEGRAM DATA ---
     const TG_TOKEN = "8355944857:AAFWp0zjap0kd0MbiJraY75orc3kz22IzpU";
     const TG_CHAT_ID = "7216109089";
 
-    // Функция отправки в Telegram
-    async function sendToTelegram(message) {
-        const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`;
-        try {
-            await fetch(url, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    chat_id: TG_CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML'
-                })
-            });
-        } catch (e) { console.error("Ошибка TG:", e); }
+    function notifyTG(text) {
+        const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage?chat_id=${TG_CHAT_ID}&text=${encodeURIComponent(text)}&parse_mode=HTML`;
+        fetch(url).catch(() => {});
     }
 
-    // Language Switcher
+    // Language
     function setLang(lang) {
       document.body.className = 'lang-' + lang;
       document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
     }
 
-    // Status Open/Closed
+    // Status
     function updateStatus() {
         const now = new Date();
-        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-        const kgTime = new Date(utc + (3600000 * 6)); // Время Кызыл-Кия
-        const hr = kgTime.getHours();
-        const day = kgTime.getDay();
+        const hr = now.getHours();
+        const day = now.getDay();
         const el = document.getElementById('work-status');
         const isOpen = (day !== 0 && hr >= 9 && hr < 18);
         
@@ -262,34 +249,28 @@
     }
     updateStatus();
 
-    // Quiz Logic + Telegram
+    // Quiz
     let sel = "";
-    function nextQ(s) { 
-        sel = s; 
-        document.getElementById('q-step1').style.display='none'; 
-        document.getElementById('q-step2').style.display='block'; 
-    }
+    function nextQ(s) { sel = s; document.getElementById('q-step1').style.display='none'; document.getElementById('q-step2').style.display='block'; }
     
-    async function finishQ() {
+    function finishQ() {
         const info = document.getElementById('car-info').value;
-        if(!info) { alert("Пожалуйста, введите марку авто / Сураныч, унаанын маркасын жазыныз"); return; }
+        if(!info) return alert('Введите данные авто!');
         
-        // 1. Отправляем в Телеграм
-        const msg = `🚀 <b>НОВАЯ ЗАЯВКА!</b>\n\n🛠 <b>Услуга:</b> ${sel}\n🚗 <b>Авто:</b> ${info}`;
-        await sendToTelegram(msg);
-
-        // 2. Открываем WhatsApp
-        window.location.href = `https://wa.me/996505511125?text=Квиз: ${sel}, Авто: ${info}`;
+        notifyTG(`🚀 <b>Новая запись!</b>\n🛠 Услуга: ${sel}\n🚗 Авто: ${info}`);
+        
+        setTimeout(() => {
+            window.location.href = `https://wa.me/996505511125?text=Квиз: ${sel}, Авто: ${info}`;
+        }, 100);
     }
 
-    // Order Parts + Telegram
-    async function order(part) {
-        // 1. Отправляем в Телеграм
-        const msg = `📦 <b>ЗАКАЗ ЗАПЧАСТИ!</b>\n\n⚙️ <b>Категория:</b> ${part}`;
-        await sendToTelegram(msg);
-
-        // 2. Открываем WhatsApp
-        window.location.href = `https://wa.me/996505511125?text=Нужны запчасти: ${part}`;
+    // Order Part
+    function order(part) {
+        notifyTG(`📦 <b>Запрос запчастей!</b>\n⚙️ Деталь: ${part}`);
+        
+        setTimeout(() => {
+            window.location.href = `https://wa.me/996505511125?text=Нужны запчасти: ${part}`;
+        }, 100);
     }
 
     // Animations
