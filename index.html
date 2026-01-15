@@ -163,6 +163,21 @@
       </div>
     </section>
 
+    <!-- Вставленный прайс-лист после квиза -->
+    <section id="prices">
+      <h2 class="section-title fade-in">
+        <span data-lang="ru">Прайс-лист</span>
+        <span data-lang="kg">Баалар тизмеси</span>
+      </h2>
+      <input type="text" id="priceSearch" placeholder="Поиск услуги..." style="width:100%; padding:15px; margin-bottom:20px; background:#000; border:1px solid #333; color:#fff; border-radius:10px;">
+      <div id="priceList" class="grid">
+        <div class="card"><h3>Диагностика</h3><p>500 сом</p></div>
+        <div class="card"><h3>Ремонт ходовой</h3><p>от 3000 сом</p></div>
+        <div class="card"><h3>ТО / Масло</h3><p>от 2000 сом</p></div>
+        <div class="card"><h3>Детейлинг</h3><p>от 5000 сом</p></div>
+      </div>
+    </section>
+
     <h2 class="section-title fade-in">
         <span data-lang="ru">Сейчас в работе</span>
         <span data-lang="kg">Учурда иште</span>
@@ -195,6 +210,24 @@
         </div>
     </section>
 
+    <!-- Вставленный раздел "О нас" после галереи -->
+    <section id="about" style="margin: 80px 0;">
+      <h2 class="section-title fade-in">
+        <span data-lang="ru">О нас</span>
+        <span data-lang="kg">Биз жөнүндө</span>
+      </h2>
+      <div class="grid fade-in">
+        <div class="card">
+          <h3 data-lang="ru">Команда</h3><h3 data-lang="kg">Команда</h3>
+          <p data-lang="ru">Опытные мастера с 10+ лет в премиум-ремонте.</p><p data-lang="kg">Премиум оңдоодо 10+ жылдык тажрыйбалуу усталар.</p>
+        </div>
+        <div class="card">
+          <h3 data-lang="ru">Оборудование</h3><h3 data-lang="kg">Жабдуу</h3>
+          <p data-lang="ru">Современные сканеры, подъемники, детейлинг-студия.</p><p data-lang="kg">Заманбап сканерлер, көтөргүчтөр, детейлинг студиясы.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" style="margin: 80px 0 120px;">
         <h2 class="section-title fade-in">
             <span data-lang="ru">Записаться на сервис</span>
@@ -225,6 +258,20 @@
   </div>
 
   <div id="imgModal" class="modal"><span style="position:absolute; top:20px; right:30px; color:#fff; font-size:40px; cursor:pointer;" onclick="this.parentElement.style.display='none'">×</span><img id="modalImg"></div>
+
+  <!-- Вставленный поп-ап с таймером акции -->
+  <div id="promoModal" class="modal" style="display:none; background:rgba(0,0,0,0.8);">
+    <div style="background:#111; padding:30px; border-radius:20px; text-align:center; max-width:400px;">
+      <span onclick="this.parentElement.parentElement.style.display='none'" style="position:absolute; top:10px; right:10px; cursor:pointer;">×</span>
+      <h2 data-lang="ru">Акция!</h2><h2 data-lang="kg">Акция!</h2>
+      <p data-lang="ru">Скидка 15% на ТО до 31.01.2026</p><p data-lang="kg">ТОго 15% арзандатуу 31.01.2026 чейин</p>
+      <span id="timer" style="font-size:20px; color:var(--gold);"></span>
+      <a href="#contact" class="btn btn-gold">Записаться</a>
+    </div>
+  </div>
+
+  <!-- Вставленная кнопка "Наверх" -->
+  <button id="toTop" style="position:fixed; bottom:80px; right:20px; background:var(--gold); color:#000; border:none; border-radius:50%; width:50px; height:50px; display:none; cursor:pointer;">↑</button>
 
   <script>
     // Language Logic
@@ -278,6 +325,29 @@
         const text = `Заявка на сервис:\nИмя: ${n}\nТел: ${p}`;
         window.location.href = `https://wa.me/996505511125?text=${encodeURIComponent(text)}`;
     };
+
+    // Вставленный скрипт для кнопки "Наверх"
+    window.onscroll = function() { document.getElementById('toTop').style.display = (document.documentElement.scrollTop > 300) ? 'block' : 'none'; };
+    document.getElementById('toTop').onclick = function() { window.scrollTo({top:0, behavior:'smooth'}); };
+
+    // Вставленный скрипт для прайс-листа (поиск)
+    document.getElementById('priceSearch').oninput = function() {
+      let filter = this.value.toLowerCase();
+      document.querySelectorAll('#priceList .card').forEach(card => {
+        card.style.display = card.textContent.toLowerCase().includes(filter) ? 'block' : 'none';
+      });
+    };
+
+    // Вставленный скрипт для поп-апа с таймером
+    setTimeout(() => document.getElementById('promoModal').style.display = 'flex', 10000);
+    let endDate = new Date('2026-01-31');
+    setInterval(() => {
+      let now = new Date();
+      let diff = endDate - now;
+      let days = Math.floor(diff / (1000*60*60*24));
+      let hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      document.getElementById('timer').textContent = `${days} дней ${hours} часов осталось`;
+    }, 1000);
   </script>
 </body>
 </html>
