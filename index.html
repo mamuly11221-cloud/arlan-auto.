@@ -1,263 +1,116 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARLAN MOTORWORKS — Премиум автосервис Кызыл-Кия</title>
-  
-  <meta name="description" content="Премиум автосервис ARLAN MOTORWORKS в Кызыл-Кия. Диагностика, ремонт ходовой, запчасти, детейлинг.">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <style>
-    :root {
-      --gold: #d4af37; --gold-hover: #b5952f; --bg: #050505; --surface: rgba(30,30,30,0.6);
-      --text: #ffffff; --muted: #a0a0a0; --accent: #25D366; --call: #3498db; --blur: 15px;
-    }
-
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    
-    /* Animations */
-    .fade-in { opacity:0; transform:translateY(20px); transition:all 0.6s ease-out; }
-    .fade-in.visible { opacity:1; transform:translateY(0); }
-
-    /* Sticky Nav */
-    .top-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(5, 5, 5, 0.7); backdrop-filter: blur(var(--blur));
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15); transition: 0.3s;
-    }
-    .nav-flex { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-    .logo { font-weight: 900; color: var(--gold); letter-spacing: 2px; font-size: 20px; text-decoration: none; }
-    .logo span { color: #fff; font-weight: 300; }
-    
-    .nav-right { display: flex; align-items: center; gap: 15px; }
-    .lang-switch { display: flex; gap: 5px; background: #111; padding: 4px; border-radius: 20px; border: 1px solid #333; }
-    .lang-btn { padding: 4px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s; color: #666; }
-    .lang-btn.active { background: var(--gold); color: #000; }
-
-    /* Hero */
-    .hero {
-      min-height: 95vh; background: url('https://img.freepik.com/premium-photo/black-car-stands-brightly-lit-auto-repair-shop-while-technician-works-background-highlighting-busy-evening-atmosphere-generative-ai_262708-50900.jpg') center/cover no-repeat;
-      position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
-    }
-    .hero::before { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,0.8), rgba(0,0,0,0.5), var(--bg)); }
-    .hero-content { position:relative; z-index:2; padding:20px; }
-    .brand-big { font-size: clamp(35px, 8vw, 75px); font-weight: 900; color: var(--gold); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; }
-    
-    /* Buttons */
-    .btn { display:inline-block; padding:16px 32px; border-radius:50px; font-weight:700; text-transform:uppercase; letter-spacing:1px; transition:0.3s; cursor:pointer; text-decoration:none; border:none; text-align: center; }
-    .btn-gold { background:var(--gold); color:#000; box-shadow:0 10px 20px rgba(212,175,85,0.3); }
-    .btn-gold:hover { transform:translateY(-3px); background: var(--gold-hover); }
-    .btn-outline { border:2px solid var(--gold); color:var(--gold); background: transparent; }
-
-    /* Sections */
-    .section-title { text-align:center; font-size:clamp(22px, 5vw, 32px); color:var(--gold); margin:80px 0 40px; text-transform:uppercase; letter-spacing:3px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin:40px 0; }
-    .card { background: #0f0f0f; border: 1px solid #1f1f1f; border-radius:16px; padding:30px; transition:0.3s; position: relative; overflow: hidden; }
-    .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-
-    /* Quiz Box */
-    .quiz-box { background: linear-gradient(145deg, #0a0a0a, #151515); padding: 40px; border-radius: 24px; border: 1px solid var(--gold); margin: 40px 0; }
-
-    /* Gallery */
-    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
-    .gallery-img { width:100%; height:200px; object-fit:cover; border-radius:10px; cursor:pointer; filter: grayscale(0.5); transition: 0.4s; }
-    .gallery-img:hover { filter: grayscale(0); transform: scale(1.02); }
-
-    /* Mobile bar */
-    .mobile-bar { position:fixed; bottom:0; left:0; right:0; height:65px; background:#000; display:flex; z-index:999; border-top: 1px solid #222; }
-    .mob-btn { flex:1; display:flex; flex-direction: column; align-items:center; justify-content:center; text-decoration:none; font-size: 11px; color: #fff; }
-    .mob-btn.wa { background: var(--accent); color: #000; font-weight: bold; font-size: 14px; }
-
-    /* Hidden elements logic */
-    [data-lang="kg"] { display: none; }
-    body.lang-kg [data-lang="ru"] { display: none; }
-    body.lang-kg [data-lang="kg"] { display: inline-block; }
-
-    #work-status { padding: 10px; border-radius: 8px; font-weight: bold; text-align: center; margin-bottom: 25px; font-size: 14px; }
-    
-    @media (max-width: 768px) {
-        .hero-content { padding-top: 100px; }
-        .grid { grid-template-columns: 1fr; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARLAN MOTORWORKS — Премиум сервис Кызыл-Кия</title>
+    <style>
+        :root { --gold: #d4af37; --bg: #050505; --text: #fff; }
+        body { font-family: sans-serif; background: var(--bg); color: var(--text); margin: 0; scroll-behavior: smooth; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://img.freepik.com/premium-photo/black-car-stands-brightly-lit-auto-repair-shop_262708-50900.jpg') center/cover; }
+        .btn { display: inline-block; padding: 15px 30px; background: var(--gold); color: #000; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; cursor: pointer; border: none; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 40px 0; }
+        .card { background: #111; padding: 25px; border-radius: 15px; border: 1px solid #222; }
+        input { width: 100%; padding: 15px; margin: 10px 0; background: #000; border: 1px solid #333; color: #fff; border-radius: 10px; }
+        .section-title { color: var(--gold); text-align: center; text-transform: uppercase; }
+        #work-status { text-align: center; padding: 10px; border-radius: 10px; margin: 10px 0; font-size: 14px; }
+    </style>
 </head>
-<body class="lang-ru">
+<body>
 
-  <nav class="top-nav">
-    <div class="container nav-flex">
-      <a href="#" class="logo">ARLAN<span> MOTORWORKS</span></a>
-      <div class="nav-right">
-        <div class="lang-switch">
-          <div class="lang-btn active" onclick="setLang('ru')">RU</div>
-          <div class="lang-btn" onclick="setLang('kg')">KG</div>
-        </div>
-        <a href="#contact" class="btn-gold" style="padding: 8px 15px; border-radius: 5px; font-size: 11px; text-decoration: none;">
-            <span data-lang="ru">ЗАПИСАТЬСЯ</span>
-            <span data-lang="kg">ЖАЗЫЛУУ</span>
-        </a>
-      </div>
+<header>
+    <div>
+        <h1 style="font-size: 3rem; color: var(--gold); margin: 0;">ARLAN MOTORWORKS</h1>
+        <p>Премиальное обслуживание вашего автомобиля в Кызыл-Кия</p>
+        <div id="work-status">Загрузка статуса...</div>
+        <a href="#quiz" class="btn">Узнать стоимость ремонта</a>
     </div>
-  </nav>
+</header>
 
-  <header class="hero">
-    <div class="hero-content fade-in">
-      <div class="brand-big">ARLAN MOTORWORKS</div>
-      <h1 style="font-size: 20px; margin-bottom: 30px; letter-spacing: 1px;">
-        <span data-lang="ru">Премиум сервис и запчасти в Кызыл-Кия</span>
-        <span data-lang="kg">Кызыл-Кыядагы премиум сервис жана запчасттар</span>
-      </h1>
-      <div id="work-status"></div>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
-        <a href="#parts" class="btn btn-gold">
-            <span data-lang="ru">Запчасти</span>
-            <span data-lang="kg">Запчасттар</span>
-        </a>
-        <a href="#gallery" class="btn btn-outline">
-            <span data-lang="ru">Наши работы</span>
-            <span data-lang="kg">Биздин иштер</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <div class="container">
-    
-    <div class="grid fade-in">
-      <div class="card">
-        <h3 data-lang="ru">🛠️ Оборудование</h3><h3 data-lang="kg">🛠️ Жабдуулар</h3>
-        <p data-lang="ru">Дилерские сканеры и спец-инструмент</p><p data-lang="kg">Дилердик сканерлер жана атайын куралдар</p>
-      </div>
-      <div class="card">
-        <h3 data-lang="ru">📜 Гарантия</h3><h3 data-lang="kg">📜 Кепилдик</h3>
-        <p data-lang="ru">Официальный акт и чек на все работы</p><p data-lang="kg">Бардык иштерге расмий акт жана чек</p>
-      </div>
-      <div class="card">
-        <h3 data-lang="ru">📖 История</h3><h3 data-lang="kg">📖 Тарыхы</h3>
-        <p data-lang="ru">Ведем сервисную книжку вашего авто</p><p data-lang="kg">Унааңыздын тейлөө китепчесин жүргүзөбүз</p>
-      </div>
-    </div>
-
-    <section id="parts" class="fade-in">
-      <h2 class="section-title">
-        <span data-lang="ru">Запчасти в наличии</span>
-        <span data-lang="kg">Запчасттар бар</span>
-      </h2>
-      <div class="grid">
-        <div class="card">
-          <h4>🛢️ Масла / Filters</h4>
-          <p style="font-size:13px; color:var(--muted); margin:10px 0;">Liqui Moly, Motul, Shell</p>
-          <button class="btn-gold" style="width:100%; border-radius:5px; padding:10px;" onclick="order('Масла')">Заказать</button>
-        </div>
-        <div class="card">
-          <h4>⛓️ Ходовая / Suspension</h4>
-          <p style="font-size:13px; color:var(--muted); margin:10px 0;">Brembo, Lemforder, TRW</p>
-          <button class="btn-gold" style="width:100%; border-radius:5px; padding:10px;" onclick="order('Ходовая')">Заказать</button>
-        </div>
-        <div class="card">
-          <h4>🔍 Подбор по VIN</h4>
-          <p style="font-size:13px; color:var(--muted); margin:10px 0;">Найдем любую деталь за 10 мин</p>
-          <button class="btn-gold" style="width:100%; border-radius:5px; padding:10px;" onclick="order('Подбор по VIN')">Отправить VIN</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="quiz" class="quiz-box fade-in">
-      <div id="q-step1" style="text-align: center;">
-        <h2 data-lang="ru">Рассчитать стоимость ремонта?</h2><h2 data-lang="kg">Оңдоп-түзөө баасын билүү?</h2>
-        <div class="grid" style="margin-top: 20px;">
-            <button class="btn btn-outline" onclick="nextQ('Двигатель')">Мотор</button>
-            <button class="btn btn-outline" onclick="nextQ('Ходовая')">Ходовая</button>
-            <button class="btn btn-outline" onclick="nextQ('ТО')">ТО / Масло</button>
-        </div>
-      </div>
-      <div id="q-step2" style="display: none; text-align: center;">
-        <h2 data-lang="ru">Ваше авто (Марка/Год)?</h2><h2 data-lang="kg">Унааңыз (Маркасы/Жылы)?</h2>
-        <input type="text" id="car-info" placeholder="Lexus GX470 2008..." style="width: 100%; max-width: 400px; padding: 15px; margin: 20px 0; background: #000; border: 1px solid #333; color: #fff; border-radius: 10px;">
-        <button class="btn btn-gold" onclick="finishQ()">WhatsApp</button>
-      </div>
-    </section>
-
-    <section id="gallery">
-        <h2 class="section-title fade-in">
-            <span data-lang="ru">Наши работы</span>
-            <span data-lang="kg">Биздин иштер</span>
-        </h2>
-        <div class="gallery-grid fade-in">
-            <img src="https://img.freepik.com/premium-photo/black-car-stands-brightly-lit-auto-repair-shop-while-technician-works-background-highlighting-busy-evening-atmosphere-generative-ai_262708-50900.jpg" class="gallery-img">
-            <img src="https://thumbs.dreamstime.com/z/matte-black-lamborghini-urus-premium-workshop-luxury-cars-stands-lit-sharp-taillights-visible-mercedes-amg-new-range-418022131.jpg" class="gallery-img">
-            <img src="https://thumbs.dreamstime.com/b/view-car-raised-lift-car-repair-shop-close-up-bottom-view-vehicle-raised-lift-car-repair-shop-155436634.jpg" class="gallery-img">
-            <img src="https://img.freepik.com/premium-photo/two-mechanic-was-checking-car-suspension-vehicle-raised-lift-maintenance-station-car-service-station-with-two-men-repair-car-mechanic-working-automotive-service-center_35150-2949.jpg" class="gallery-img">
-        </div>
-    </section>
-
-    <section id="contact" style="margin: 80px 0 120px;">
-        <h2 class="section-title fade-in">
-            <span data-lang="ru">Контакты</span>
-            <span data-lang="kg">Байланыш</span>
-        </h2>
-        <div style="background: #0a0a0a; padding: 30px; border-radius: 20px; border: 1px solid #1a1a1a;" class="fade-in">
-            <p style="margin-bottom: 20px; text-align: center;">📍 Кызыл-Кия, ул. Кудайбердиева Умсунай, 3</p>
-            <div style="display: flex; gap: 10px; justify-content: center;">
-                <a href="https://wa.me/996505511125" class="btn btn-gold" style="flex:1;">WhatsApp</a>
-                <a href="tel:+996505511125" class="btn btn-outline" style="flex:1;">Call</a>
+<div class="container">
+    <section id="parts">
+        <h2 class="section-title">Запчасти в наличии</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🛢️ Масла и фильтры</h3>
+                <p>Liqui Moly, Shell, Motul. Только оригинал.</p>
+                <button class="btn" onclick="sendOrder('Запрос масла/фильтров')">Заказать</button>
+            </div>
+            <div class="card">
+                <h3>⛓️ Ходовая часть</h3>
+                <p>Рычаги, амортизаторы, колодки в наличии.</p>
+                <button class="btn" onclick="sendOrder('Запрос по ходовой')">Заказать</button>
             </div>
         </div>
     </section>
-  </div>
 
-  <div class="mobile-bar">
-    <a href="tel:+996505511125" class="mob-btn">📞 <span data-lang="ru">Позвонить</span><span data-lang="kg">Чалуу</span></a>
-    <a href="https://wa.me/996505511125" class="mob-btn wa">💬 WhatsApp</a>
-  </div>
+    <section id="quiz" style="background: #0a0a0a; padding: 40px; border-radius: 20px; border: 1px solid var(--gold);">
+        <h2 class="section-title">Запись на сервис</h2>
+        <div id="step1">
+            <p style="text-align: center;">Что именно нужно отремонтировать?</p>
+            <div class="grid">
+                <button class="btn" onclick="nextStep('Двигатель')">Двигатель</button>
+                <button class="btn" onclick="nextStep('Ходовая')">Ходовая</button>
+                <button class="btn" onclick="nextStep('Тех. осмотр')">ТО / Замена масла</button>
+            </div>
+        </div>
+        <div id="step2" style="display: none;">
+            <p style="text-align: center;">Укажите марку машины и ваш телефон:</p>
+            <input type="text" id="client-data" placeholder="Например: Lexus GX470, 0505XXXXXX">
+            <button class="btn" style="width: 100%;" onclick="finalStep()">Отправить заявку</button>
+        </div>
+    </section>
+</div>
 
-  <script>
-    // Language
-    function setLang(lang) {
-      document.body.className = 'lang-' + lang;
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+<script>
+    const TG_TOKEN = "8355944857:AAFWp0zjap0kd0MbiJraY75orc3kz22IzpU";
+    const TG_CHAT_ID = "7216109089";
+    let selectedService = "";
+
+    // Функция отправки в Telegram
+    async function notifyTG(message) {
+        const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`;
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: TG_CHAT_ID, text: message, parse_mode: "HTML" })
+        });
     }
 
-    // Status Open/Closed
-    function updateStatus() {
-        const now = new Date();
-        const hr = now.getHours();
-        const day = now.getDay();
-        const el = document.getElementById('work-status');
-        const isOpen = (day !== 0 && hr >= 9 && hr < 18);
+    // Работа квиза
+    function nextStep(service) {
+        selectedService = service;
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+    }
+
+    async function finalStep() {
+        const clientInfo = document.getElementById('client-data').value;
+        const msg = `<b>🚀 НОВАЯ ЗАЯВКА!</b>\n\n<b>Услуга:</b> ${selectedService}\n<b>Инфо:</b> ${clientInfo}`;
         
-        if(isOpen) {
-            el.innerHTML = '<span style="color:#25D366">● Мы открыты</span> (09:00 - 18:00)';
-            el.style.background = "rgba(37,211,102,0.1)";
+        await notifyTG(msg);
+        alert("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
+        window.location.href = `https://wa.me/996505511125?text=Заявка: ${selectedService}. Данные: ${clientInfo}`;
+    }
+
+    async function sendOrder(type) {
+        await notifyTG(`<b>📦 ЗАПРОС ЗАПЧАСТЕЙ</b>\nТип: ${type}`);
+        window.location.href = `https://wa.me/996505511125?text=Интересуют запчасти: ${type}`;
+    }
+
+    // Статус работы
+    function checkStatus() {
+        const hr = new Date().getHours();
+        const el = document.getElementById('work-status');
+        if (hr >= 9 && hr < 18) {
+            el.innerHTML = "● <span style='color: #25D366'>СЕЙЧАС ОТКРЫТО</span>";
         } else {
-            el.innerHTML = '<span style="color:#ff4444">○ Сейчас закрыто</span> (Откроемся в 09:00)';
-            el.style.background = "rgba(255,68,68,0.1)";
+            el.innerHTML = "○ <span style='color: #ff4444'>СЕЙЧАС ЗАКРЫТО</span> (с 09:00)";
         }
     }
-    updateStatus();
+    checkStatus();
+</script>
 
-    // Quiz
-    let sel = "";
-    function nextQ(s) { sel = s; document.getElementById('q-step1').style.display='none'; document.getElementById('q-step2').style.display='block'; }
-    function finishQ() {
-        const info = document.getElementById('car-info').value;
-        window.location.href = `https://wa.me/996505511125?text=Квиз: ${sel}, Авто: ${info}`;
-    }
-
-    // Order Part
-    function order(part) {
-        window.location.href = `https://wa.me/996505511125?text=Нужны запчасти: ${part}`;
-    }
-
-    // Intersection Observer
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-    }, {threshold: 0.1});
-    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  </script>
 </body>
 </html>
